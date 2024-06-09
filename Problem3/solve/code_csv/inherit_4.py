@@ -396,3 +396,5 @@ combined_paths = {**paths_qm, **paths_mr}
 
 # Plot the paths
 plot_paths(combined_paths, storage_boxes, picking_stations, recycling_stations)
+
+
