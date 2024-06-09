@@ -3,3 +3,4 @@
 /Problem2/.vscode/
 /Problem3/.idea/
 /Problem3/.vscode/
+*/__pycache__/
