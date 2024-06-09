@@ -1,0 +1,109 @@
+\ProvidesPackage{third}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+
+%\renewcommand{\cftdot}{$\cdot$}
+%\renewcommand{\cftsecdotsep}{1.5}
+\renewcommand{\cftsecdotsep}{4.5}
+\setlength{\cftbeforesecskip}{7pt}
+\setlength{\cftbeforesubsecskip}{3pt}
+%\setlength{\cftbeforesubsecskip}{5pt}
+\renewcommand{\cftsecfont}{\bfseries\zihao{-4}\heiti}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftsecaftersnumb}{\hskip.4em}
+%%目录
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+\renewcommand{\contentsname}{目录}
+\titlecontents{section}[0em]{\songti\zihao{-4}}{\thecontentslabel\ }{}
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
+\titlecontents{subsection}[2em]{\vspace{0.1\baselineskip}\songti\zihao{-4}}{\thecontentslabel\ }{}
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
+\titlecontents{subsubsection}[4em]{\vspace{0.1\baselineskip}\songti\zihao{-4}}{\thecontentslabel\ }{}
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+
+
+
+\newcommand{\maketitlepage}[7]{% 封面
+    \begin{titlepage}  
+       \vspace*{-3cm}  
+          
+        \begin{figure}[h]  
+            \centering  
+            \includegraphics[width=0.65\linewidth]{figures/char.png}  
+        \end{figure}  
+          
+        \begin{figure}[h]  
+            \centering  
+            \includegraphics[width=0.48\linewidth]{figures/logo.png}  
+        \end{figure}  
+        \vspace{-0.5cm}  
+        \begin{center}  
+            \Huge{\textbf{运筹学}\\  
+            \textbf{实验报告}}  
+        \end{center}  
+        \vspace*{1.5cm}  
+        \begin{center}  
+            \Large  
+            问题名称\ \ \underline{\makebox[250pt]{#1}} \\ 
+            \vspace{0.5cm}  
+            成\quad \quad \;员  \ \ \underline{\makebox[250pt]{#2}}\\  
+            \vspace{0.5cm}  
+            日\quad \quad \;期  \ \ \underline{\makebox[250pt]{#3}}\\  
+            \vspace{0.5cm}  
+            指导老师\ \ \underline{\makebox[250pt]{#4}}\\  
+        \end{center}  
+    \end{titlepage}  
+}
+
+
+
+
+
+
+\lstset{
+    language=Tex, % 设置语言
+    basicstyle=\ttfamily, % 设置字体族
+    breaklines=true, % 自动换行
+    keywordstyle=\bfseries\color{NavyBlue}, % 设置关键字为粗体，颜色为 NavyBlue
+    morekeywords={}, % 设置更多的关键字，用逗号分隔
+    emph={self}, % 指定强调词，如果有多个，用逗号隔开
+    emphstyle=\bfseries\color{Rhodamine}, % 强调词样式设置
+    commentstyle=\itshape\color{black!50!white}, % 设置注释样式，斜体，浅灰色
+    stringstyle=\bfseries\color{PineGreen!90!black}, % 设置字符串样式
+    columns=flexible,
+    numbers=left, % 显示行号在左边
+    numbersep=2em, % 设置行号的具体位置
+    numberstyle=\footnotesize, % 缩小行号
+    numberstyle=\color{gray},
+    frame=shadowbox, % 边框
+    rulesepcolor=\color{red!20!green!20!blue!20}, 
+    % framesep=1em % 设置代码与边框的距离
+    showstringspaces=false
+}
