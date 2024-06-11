@@ -1,2 +1,7 @@
 /Problem2/example/
+/Problem2/.idea/
+/Problem2/.vscode/
+/Problem3/.idea/
+/Problem3/.vscode/
+*/__pycache__/
 Statements.md
